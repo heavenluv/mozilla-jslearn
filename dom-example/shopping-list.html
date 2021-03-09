@@ -38,24 +38,23 @@
         const btn = document.querySelector('button');
 
         btn.onclick = function() {
-            let value = input.textContent;
-            input.textContent = '';
+            let content = input.value;
+            input.value = '';
+
             const list = document.createElement('li');
             const span = document.createElement('span');
             const ibtn = document.createElement('button');
+
             list.appendChild(span);
             list.appendChild(ibtn)
-            span.textContent = value;
+            span.textContent = content;
             ibtn.textContent = 'Delete';
             ul.appendChild(list);
-            ibtn.onclick = function() {
-                ul.remove(list);
+            ibtn.onclick = function(e) {
+                ul.removeChild(list);
             }
-        }
-        btn.onclick = function getFocus() {
             input.focus();
         }
-        
 
     </script>
 </body>
