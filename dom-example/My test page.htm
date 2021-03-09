@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)https://heavenluv.github.io/mozilla-jslearn/demo-promise.html -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>My test page</title>
+</head>
+
+<body>
+    <p>This is my page</p>
+    <script>
+        let promise = fetch('coffee.jpg');
+        let promise2 = promise.then(response => {
+            if (!response.ok) {
+                throw new Error('HTTP error! status: ${response.status}');
+            } else {
+                return response.blob();
+            }
+        });
+        let promise3 = promise2.then(myBlob => {
+            let objectURL = URL.createObjectURL(myBlob);
+            let image = document.createElement('img');
+            image.src = objectURL;
+            document.body.appendChild(image);
+        });
+        let errorCase = promise3.catch(e => {
+            console.log('There has been a problem with your fetch operation: ' + e.message);
+        });
+
+
+    </script>
+
+
+<img src="blob:https://heavenluv.github.io/faf32dc0-7b1f-4be6-9344-bcb708596840"></body></html>
